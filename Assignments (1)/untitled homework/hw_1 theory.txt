@@ -1,0 +1,331 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "78f67e77-bbfc-4988-9938-73b4a35fd73b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'2'"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ascii(2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "749c6a03-a3fd-476c-8cb8-f4a64b676ae8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "enter number 2\n"
+     ]
+    }
+   ],
+   "source": [
+    "num=input (\"enter number\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "43d46956-cb07-4caa-8618-5708a175f4e3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"2\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "dd70f80d-e94f-422f-a9d2-fa6ea6c1e0f8",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "140733134447560"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "id(2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "d2a76f06-5c2a-4073-964c-a76904cb0307",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "enter bool 2\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "'\\nthis is a prank, user actually has to use int\\n'"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x=int(input(\"enter bool\"))  \n",
+    "\"\"\"\n",
+    "this is a prank, user actually has to use int\n",
+    "\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "36edc679-eb49-4b09-87fc-0fa54ba29de9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "'next few lines of code will allow user to enter 4 variables'"
+      ]
+     },
+     "execution_count": 30,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(x)\n",
+    "\n",
+    "\"\"\"next few lines of code will allow user to enter 4 variables\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 92,
+   "id": "7c568e29-5ae3-4277-976e-da126999b37e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "s 22\n"
+     ]
+    }
+   ],
+   "source": [
+    "x_1=int(input(\"s\"))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "88138792-413e-4cd5-a6b9-ae615835ae7a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "c 2\n"
+     ]
+    }
+   ],
+   "source": [
+    "x_2=int(input(\"c\"))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "e9aaf076-786b-4acd-9bd0-ed5c304bf85c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "p 2\n"
+     ]
+    }
+   ],
+   "source": [
+    "x_3=int(input(\"p\"))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "59595056-c027-46eb-9c69-410638008dbe",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "d 2\n"
+     ]
+    }
+   ],
+   "source": [
+    "x_4=int(input(\"d\"))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 90,
+   "id": "7c646bf5-da8b-4a30-8759-7a1f225dd29f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "p1=bool\n",
+    "p2=bool\n",
+    "p3=bool\n",
+    "p4=bool\n",
+    "\n",
+    "\"\"\"pn means pass in subject code n\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 91,
+   "id": "c1775900-ecaf-4cd6-87c7-1622d309eca8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "False\n",
+      "False\n",
+      "False\n",
+      "False\n"
+     ]
+    }
+   ],
+   "source": [
+    "if (x_1>=40):\n",
+    "    (p1)=True\n",
+    "else:\n",
+    "    (p1)=False\n",
+    "print(p1)\n",
+    "if (x_2>=40):\n",
+    "    (p2)=True\n",
+    "else:\n",
+    "    (p2)=False\n",
+    "print(p2)\n",
+    "if (x_3>=40):\n",
+    "    (p3)=True\n",
+    "else:\n",
+    "    (p3)=False\n",
+    "print(p3)\n",
+    "if (x_4>=40):\n",
+    "    (p4)=True\n",
+    "else:\n",
+    "    (p4)=False \n",
+    "    print(p4)\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 89,
+   "id": "4de2e06c-5c91-4e40-9f01-a9e426d41c84",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "fail\n"
+     ]
+    }
+   ],
+   "source": [
+    "if ((p1)and(p2)and(p3)and(p4))==True:\n",
+    "    print(\"pass\")\n",
+    "else:\n",
+    "    print(\"fail\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b446da91-085a-479f-bfd4-cf6b0a38346b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "split(tau= input(int(\"enter integer\"))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "2147a37a-3a79-4328-9d40-31e7f98068d9",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python [conda env:base] *",
+   "language": "python",
+   "name": "conda-base-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

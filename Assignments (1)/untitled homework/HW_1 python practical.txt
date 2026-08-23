@@ -1,0 +1,511 @@
+# 1. Largest and smallest element
+numbers = (12, 45, 7, 89, 23, 56, 3, 91, 34, 18)
+
+largest = numbers[0]
+smallest = numbers[0]
+
+for num in numbers:
+    if num > largest:
+        largest = num
+    if num < smallest:
+        smallest = num
+
+print("\n1. Largest:", largest)
+print("Smallest:", smallest)
+
+
+# 2. Sum and average
+numbers = (10, 20, 30, 40, 50)
+
+total = sum(numbers)
+average = total / len(numbers)
+
+print("\n2. Sum:", total)
+print("Average:", average)
+
+
+# 3. Count even and odd elements
+numbers = (10, 15, 22, 31, 40, 55, 60)
+
+even = 0
+odd = 0
+
+for num in numbers:
+    if num % 2 == 0:
+        even += 1
+    else:
+        odd += 1
+
+print("\n3. Even:", even)
+print("Odd:", odd)
+
+
+# 4. Count positive, negative, and zero elements
+numbers = (10, -5, 0, 23, -8, 0, 15)
+
+positive = 0
+negative = 0
+zero = 0
+
+for num in numbers:
+    if num > 0:
+        positive += 1
+    elif num < 0:
+        negative += 1
+    else:
+        zero += 1
+
+print("\n4. Positive:", positive)
+print("Negative:", negative)
+print("Zero:", zero)
+
+
+# 5. Check whether an element exists
+numbers = (10, 20, 30, 40, 50)
+element = 30
+
+if element in numbers:
+    print("\n5. Element exists")
+else:
+    print("\n5. Element does not exist")
+
+
+# 6. Number of occurrences of an element
+numbers = (10, 20, 30, 20, 40, 20, 50)
+element = 20
+
+print("\n6. Occurrences:", numbers.count(element))
+
+
+# 7. Names whose length is greater than 5
+names = ("Amit", "Sneha", "Rahul", "Priyanka", "Anjali", "Christopher")
+
+print("\n7. Names with length greater than 5:")
+for name in names:
+    if len(name) > 5:
+        print(name)
+
+
+# 8. Create a tuple containing only even numbers
+numbers = (10, 15, 22, 31, 40, 55, 60)
+
+even_numbers = ()
+
+for num in numbers:
+    if num % 2 == 0:
+        even_numbers += (num,)
+
+print("\n8. Even numbers:", even_numbers)
+
+
+# 9. Print elements in reverse order without reverse()
+numbers = (10, 20, 30, 40, 50)
+
+print("\n9. Reverse order:", end=" ")
+for i in range(len(numbers) - 1, -1, -1):
+    print(numbers[i], end=" ")
+print()
+
+
+# 10. Find second-largest element
+numbers = (10, 45, 23, 89, 56, 67)
+
+largest = second_largest = float("-inf")
+
+for num in numbers:
+    if num > largest:
+        second_largest = largest
+        largest = num
+    elif num > second_largest and num != largest:
+        second_largest = num
+
+print("\n10. Second largest:", second_largest)
+
+
+# 11. Concatenate two tuples
+tuple1 = (1, 2, 3)
+tuple2 = (4, 5, 6)
+
+result = tuple1 + tuple2
+
+print("\n11. Concatenated tuple:", result)
+
+
+# 12. Indexing and slicing
+numbers = (10, 20, 30, 40, 50, 60, 70)
+
+print("\n12. First element:", numbers[0])
+print("Last element:", numbers[-1])
+print("First three:", numbers[:3])
+print("Last three:", numbers[-3:])
+print("Elements at even indexes:", numbers[::2])
+
+
+# 13. Check whether all elements are unique
+numbers = (10, 20, 30, 40, 50)
+
+if len(numbers) == len(set(numbers)):
+    print("\n13. All elements are unique")
+else:
+    print("\n13. Duplicate elements exist")
+
+
+# 14. Create a tuple containing only unique elements
+numbers = (10, 20, 30, 20, 40, 10, 50)
+
+unique = ()
+
+for num in numbers:
+    if num not in unique:
+        unique += (num,)
+
+print("\n14. Unique elements:", unique)
+
+
+# 15. Common elements between two tuples
+tuple1 = (10, 20, 30, 40, 50)
+tuple2 = (30, 40, 50, 60, 70)
+
+common = ()
+
+for element in tuple1:
+    if element in tuple2 and element not in common:
+        common += (element,)
+
+print("\n15. Common elements:", common)
+
+
+# 16. Elements present in first tuple but not second
+tuple1 = (10, 20, 30, 40, 50)
+tuple2 = (30, 40, 60)
+
+result = ()
+
+for element in tuple1:
+    if element not in tuple2:
+        result += (element,)
+
+print("\n16. Elements only in first tuple:", result)
+
+
+# 17. Sort ascending and descending
+numbers = (45, 12, 89, 23, 7, 56)
+
+ascending = tuple(sorted(numbers))
+descending = tuple(sorted(numbers, reverse=True))
+
+print("\n17. Ascending:", ascending)
+print("Descending:", descending)
+
+
+# 18. Maximum and minimum without max() and min()
+numbers = (45, 12, 89, 23, 7, 56)
+
+maximum = numbers[0]
+minimum = numbers[0]
+
+for num in numbers:
+    if num > maximum:
+        maximum = num
+    if num < minimum:
+        minimum = num
+
+print("\n18. Maximum:", maximum)
+print("Minimum:", minimum)
+
+
+# 19. Tuple packing
+student = "Amit", 18, "CSE", 85
+
+print("\n19. Packed tuple:", student)
+print("Elements:")
+for element in student:
+    print(element)
+
+
+# 20. Tuple unpacking
+student = ("Amit", 18, "CSE", 92)
+
+name, age, branch, marks = student
+
+print("\n20. Name:", name)
+print("Age:", age)
+print("Branch:", branch)
+print("Marks:", marks)
+
+
+# 21. Star unpacking
+numbers = (10, 20, 30, 40, 50)
+
+first, second, *remaining = numbers
+
+print("\n21. First:", first)
+print("Second:", second)
+print("Remaining:", remaining)
+
+
+# 22. Swap two variables using tuple unpacking
+a = 10
+b = 20
+
+a, b = b, a
+
+print("\n22. After swapping:")
+print("a =", a)
+print("b =", b)
+
+
+# 23. Unpack marks and calculate total and average
+marks = (85, 90, 78, 88, 95)
+
+m1, m2, m3, m4, m5 = marks
+
+total = m1 + m2 + m3 + m4 + m5
+average = total / 5
+
+print("\n23. Total:", total)
+print("Average:", average)
+
+
+# 24. Student with highest marks
+students = (
+    ("Amit", 85),
+    ("Sneha", 92),
+    ("Rahul", 78),
+    ("Priya", 95)
+)
+
+highest_student = students[0]
+
+for student in students:
+    if student[1] > highest_student[1]:
+        highest_student = student
+
+print("\n24. Highest scorer:", highest_student[0])
+print("Marks:", highest_student[1])
+
+
+# 25. Employees with salary greater than 50000
+employees = (
+    (101, "Amit", 45000),
+    (102, "Sneha", 65000),
+    (103, "Rahul", 55000),
+    (104, "Priya", 48000)
+)
+
+print("\n25. Employees with salary greater than 50000:")
+for employee_id, name, salary in employees:
+    if salary > 50000:
+        print(employee_id, name, salary)
+
+
+# 26. Word with maximum length
+words = ("cat", "elephant", "dog", "programming", "apple")
+
+longest = words[0]
+
+for word in words:
+    if len(word) > len(longest):
+        longest = word
+
+print("\n26. Longest word:", longest)
+
+
+# 27. Second-smallest and second-largest
+numbers = (45, 12, 89, 23, 7, 56)
+
+sorted_numbers = sorted(set(numbers))
+
+second_smallest = sorted_numbers[1]
+second_largest = sorted_numbers[-2]
+
+print("\n27. Second smallest:", second_smallest)
+print("Second largest:", second_largest)
+
+
+# 28. Separate numbers and strings
+data = (10, "hello", 20, "world", 3.5, "Python")
+
+numbers = ()
+strings = ()
+
+for element in data:
+    if isinstance(element, (int, float)):
+        numbers += (element,)
+    elif isinstance(element, str):
+        strings += (element,)
+
+print("\n28. Numbers:", numbers)
+print("Strings:", strings)
+
+
+# 29. Sum of all elements in nested tuple
+numbers = ((10, 20), (30, 40), (50, 60))
+
+total = 0
+
+for row in numbers:
+    for element in row:
+        total += element
+
+print("\n29. Sum of all elements:", total)
+
+
+# 30. Students scoring more than 75
+students = (
+    ("Amit", 85),
+    ("Sneha", 92),
+    ("Rahul", 70),
+    ("Priya", 95)
+)
+
+print("\n30. Students scoring more than 75:")
+for name, marks in students:
+    if marks > 75:
+        print(name)
+
+
+# 31. Frequency of every element
+numbers = (10, 20, 10, 30, 20, 10, 40)
+
+checked = ()
+
+print("\n31. Frequency of every element:")
+for num in numbers:
+    if num not in checked:
+        print(num, ":", numbers.count(num))
+        checked += (num,)
+
+
+# 32. Check whether two tuples contain the same elements
+tuple1 = (10, 20, 30, 40)
+tuple2 = (40, 30, 20, 10)
+
+if sorted(tuple1) == sorted(tuple2):
+    print("\n32. Both tuples contain the same elements")
+else:
+    print("\n32. Tuples are different")
+
+
+# 33. Rotate tuple left by one position
+numbers = (10, 20, 30, 40, 50)
+
+rotated = numbers[1:] + numbers[:1]
+
+print("\n33. Left rotated tuple:", rotated)
+
+
+# 34. Rotate tuple right by two positions
+numbers = (10, 20, 30, 40, 50)
+
+rotated = numbers[-2:] + numbers[:-2]
+
+print("\n34. Right rotated tuple:", rotated)
+
+
+# 35. Separate positive, negative, and zero values
+numbers = (10, -5, 0, 23, -8, 0, 15)
+
+positive = ()
+negative = ()
+zero = ()
+
+for num in numbers:
+    if num > 0:
+        positive += (num,)
+    elif num < 0:
+        negative += (num,)
+    else:
+        zero += (num,)
+
+print("\n35. Positive:", positive)
+print("Negative:", negative)
+print("Zero:", zero)
+
+
+# 36. Sort student records according to marks in descending order
+students = (
+    ("Amit", 85),
+    ("Sneha", 92),
+    ("Rahul", 78),
+    ("Priya", 95)
+)
+
+sorted_students = tuple(
+    sorted(students, key=lambda student: student[1], reverse=True)
+)
+
+print("\n36. Students sorted by marks:")
+print(sorted_students)
+
+
+# 37. Most expensive product
+products = (
+    ("Laptop", 65000),
+    ("Mobile", 30000),
+    ("Tablet", 25000),
+    ("Desktop", 75000)
+)
+
+most_expensive = products[0]
+
+for product in products:
+    if product[1] > most_expensive[1]:
+        most_expensive = product
+
+print("\n37. Most expensive product:", most_expensive[0])
+print("Price:", most_expensive[1])
+
+
+# 38. Oldest person
+people = (
+    ("Amit", 25),
+    ("Sneha", 32),
+    ("Rahul", 28),
+    ("Priya", 40)
+)
+
+oldest = people[0]
+
+for person in people:
+    if person[1] > oldest[1]:
+        oldest = person
+
+print("\n38. Oldest person:", oldest[0])
+print("Age:", oldest[1])
+
+
+# 39. Find all pairs whose sum equals a given number
+numbers = (10, 20, 30, 40, 50, 60)
+target = 70
+
+print("\n39. Pairs with sum", target, ":")
+
+for i in range(len(numbers)):
+    for j in range(i + 1, len(numbers)):
+        if numbers[i] + numbers[j] == target:
+            print((numbers[i], numbers[j]))
+
+
+# 40. Sum of each row and each column
+matrix = (
+    (10, 20, 30),
+    (40, 50, 60),
+    (70, 80, 90)
+)
+
+print("\n40. Row sums:")
+
+for i in range(len(matrix)):
+    row_sum = sum(matrix[i])
+    print("Row", i + 1, "sum:", row_sum)
+
+print("Column sums:")
+
+for j in range(len(matrix[0])):
+    column_sum = 0
+
+    for i in range(len(matrix)):
+        column_sum += matrix[i][j]
+
+    print("Column", j + 1, "sum:", column_sum)
