@@ -1,4 +1,4 @@
-## i shall use try to use object oriented programming, since entity component based system is more reusable but not easy to do at my level
+## i shall use try to use ECS architecture, since entity component based system is more reusable but not easy to do at my level
 def line_int_one_input(x):
   return (m*x+c)
 x=  x=int(input("enter value of line input here"))
