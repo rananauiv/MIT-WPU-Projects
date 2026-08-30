@@ -1,0 +1,56 @@
+students = {}
+
+# 1. Add student records
+n = int(input("Enter number of students: "))
+
+for i in range(n):
+    print("\nEnter details of student", i + 1)
+
+    roll_no = int(input("Enter Roll Number: "))
+    name = input("Enter Name: ")
+    branch = input("Enter Branch: ")
+    marks = float(input("Enter Marks: "))
+
+    # Tuple is used to store student information
+    students[roll_no] = (name, branch, marks)
+
+print("\nStudent Records:")
+for roll, details in students.items():
+    print("Roll Number:", roll,
+          "| Name:", details[0],
+          "| Branch:", details[1],
+          "| Marks:", details[2])
+
+
+# 2. Delete a student record
+roll_no = int(input("\nEnter Roll Number to delete: "))
+
+if roll_no in students:
+    del students[roll_no]
+    print("Student record deleted.")
+else:
+    print("Student not found.")
+
+
+# 3. Update student details
+roll_no = int(input("\nEnter Roll Number to update: "))
+
+if roll_no in students:
+    name = input("Enter new Name: ")
+    branch = input("Enter new Branch: ")
+    marks = float(input("Enter new Marks: "))
+
+    students[roll_no] = (name, branch, marks)
+    print("Student record updated.")
+else:
+    print("Student not found.")
+
+
+# 4. Display final student records
+print("\nFinal Student Records:")
+
+for roll, details in students.items():
+    print("Roll Number:", roll,
+          "| Name:", details[0],
+          "| Branch:", details[1],
+          "| Marks:", details[2])
