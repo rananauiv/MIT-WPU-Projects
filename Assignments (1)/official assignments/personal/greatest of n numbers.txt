@@ -1,0 +1,7 @@
+n=int(input("enter n:  "))
+numbers = []
+
+for i in range(n):
+	numbers.append(int(input("enter number:  ")))
+greatest = max(numbers)
+print(greatest)
