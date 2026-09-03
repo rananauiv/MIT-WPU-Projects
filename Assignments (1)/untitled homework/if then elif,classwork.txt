@@ -1,0 +1,8 @@
+n= int(input())
+x=((n%2== 0) and ((n in range(2,6))or(n in range(21,101)))) 
+
+if x== 0:
+    print("Weird")
+    
+elif x== 1:
+    print("Not Weird")
