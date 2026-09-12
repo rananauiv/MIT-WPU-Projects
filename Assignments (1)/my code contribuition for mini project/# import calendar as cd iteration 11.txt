@@ -1,0 +1,128 @@
+#this iteration has used ai, menu rewriting is remaining
+import calendar as cd
+
+
+
+# these are terms that will be used later
+
+task_list_relation = {1: "strength", 2: "discipline", 3: "intellect"}
+
+
+# i have put clear here since at this iteration, calendar has not been implemented
+array_of_tasks_made_by_user_bool = []
+array_of_tasks_made_by_user_bool.clear()
+
+array_of_tasks_made_by_user = []
+array_of_tasks_made_by_user.clear()
+
+
+# CONSTRAIN NUMBER OF TASKS
+while True:
+    try:
+        n = int(input("How many tasks do you want? "))
+
+        if n > 0:
+            break
+        else:
+            print("Invalid input. Enter a number greater than 0.")
+
+    except ValueError:
+        print("Invalid input. Enter a whole number.")
+
+
+i = 0
+
+while i < n:
+
+    value_1 = str(input(f"Enter task {i + 1}: "))
+
+    # CONSTRAIN TASK TYPE
+    while True:
+        try:
+            task_type = int(input(
+                "Enter task type 1,2,3 = strength,discipline,intellect: "
+            ))
+
+            if 1 <= task_type <= 3:
+                break
+            else:
+                print("Invalid task type. Please enter 1, 2, or 3.")
+
+        except ValueError:
+            print("Invalid input. Please enter 1, 2, or 3.")
+
+
+    value_2 = task_list_relation[task_type]
+
+    array_of_tasks_made_by_user.append([value_1, value_2])
+
+    i += 1
+
+
+i_bool = 0
+
+while i_bool < n:
+
+    # CONSTRAIN TASK COMPLETION
+    while True:
+        try:
+            completion = int(input(
+                f"Enter task completion (1 = True, 0 = False) for task {i_bool + 1}: "
+            ))
+
+            if completion == 1:
+                value = True
+                break
+
+            elif completion == 0:
+                value = False
+                break
+
+            else:
+                print("Invalid input. Please enter 0 or 1.")
+
+        except ValueError:
+            print("Invalid input. Please enter 0 or 1.")
+
+
+    array_of_tasks_made_by_user_bool.append(value)
+
+    i_bool += 1
+
+
+result = [
+    a + [b]
+    for a, b in zip(
+        array_of_tasks_made_by_user,
+        array_of_tasks_made_by_user_bool
+    )
+]
+
+
+strength_score = sum(
+    1 for entry in result
+    if entry[1] == "strength" and entry[2]
+)
+
+discipline_score = sum(
+    1 for entry in result
+    if entry[1] == "discipline" and entry[2]
+)
+
+intellect_score = sum(
+    1 for entry in result
+    if entry[1] == "intellect" and entry[2]
+)
+
+
+final_score = (
+    strength_score,
+    discipline_score,
+    intellect_score
+)
+
+
+print(
+    "Your score for strength, discipline and intellect respectively are:",
+    final_score
+)

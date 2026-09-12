@@ -1,0 +1,25 @@
+
+#this has not used ai, final iteration has
+
+
+import calendar as cd
+
+#these are terms that will be used later
+task_strength_selected= bool
+task_discipline_selected= bool
+task_intellect_selected= bool
+
+#i have put clear here since at this iteration, calendar has not been implimented
+
+array_of_tasks_made_by_user = []
+array_of_tasks_made_by_user.clear
+n = int(input("How many tasks do yout want? "))
+
+i = 0
+#while checks if user input is greater than i for each , if it is equal then it stops asking user for task str
+while i < n:
+    value = str(input(f"Enter task {i + 1}: "))
+    array_of_tasks_made_by_user.append(value)
+    i += 1
+#this is optional check for array
+print("Array:",array_of_tasks_made_by_user )
