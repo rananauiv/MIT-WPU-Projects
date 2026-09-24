@@ -1,0 +1,770 @@
+import tkinter as tk
+from tkinter import ttk, messagebox
+
+
+# ============================================================
+# DATA
+# ============================================================
+
+task_list_relation = {
+    1: "strength",
+    2: "discipline",
+    3: "intellect"
+}
+
+array_of_tasks_made_by_user = []
+array_of_tasks_made_by_user_bool = []
+
+
+# ============================================================
+# COLORS / FONTS
+# ============================================================
+
+BG = "#18181b"
+PANEL = "#242428"
+PANEL_2 = "#303036"
+TEXT = "#f2f2f2"
+SUBTEXT = "#a8a8b0"
+
+STRENGTH = "#c94b4b"
+DISCIPLINE = "#4b8bc9"
+INTELLECT = "#9654c9"
+
+FONT = ("Arial", 12)
+TITLE_FONT = ("Arial", 25, "bold")
+BUTTON_FONT = ("Arial", 12, "bold")
+
+
+# ============================================================
+# ROOT
+# ============================================================
+
+root = tk.Tk()
+
+root.title("Strength • Discipline • Intellect")
+root.geometry("800x650")
+root.resizable(False, False)
+root.configure(bg=BG)
+
+
+# ============================================================
+# MAIN FRAME
+# ============================================================
+
+main_frame = tk.Frame(
+    root,
+    bg=BG
+)
+
+main_frame.pack(
+    fill="both",
+    expand=True
+)
+
+
+# ============================================================
+# VARIABLES
+# ============================================================
+
+task_entries = []
+completion_vars = []
+
+number_entry = None
+task_frame = None
+
+
+# ============================================================
+# GENERAL FUNCTIONS
+# ============================================================
+
+def clear_main_frame():
+    for widget in main_frame.winfo_children():
+        widget.destroy()
+
+
+def make_button(parent, text, command, width=25, bg=PANEL_2):
+    return tk.Button(
+        parent,
+        text=text,
+        command=command,
+        width=width,
+        height=2,
+        font=BUTTON_FONT,
+        bg=bg,
+        fg=TEXT,
+        activebackground="#404047",
+        activeforeground=TEXT,
+        relief="flat",
+        bd=0,
+        cursor="hand2"
+    )
+
+
+# ============================================================
+# MAIN MENU
+# ============================================================
+
+def main_menu():
+
+    clear_main_frame()
+
+    title = tk.Label(
+        main_frame,
+        text="STRENGTH • DISCIPLINE • INTELLECT",
+        font=TITLE_FONT,
+        bg=BG,
+        fg=TEXT
+    )
+
+    title.pack(pady=(80, 15))
+
+    subtitle = tk.Label(
+        main_frame,
+        text="Daily Task System",
+        font=("Arial", 13),
+        bg=BG,
+        fg=SUBTEXT
+    )
+
+    subtitle.pack(pady=(0, 50))
+
+    create_button = make_button(
+        main_frame,
+        "CREATE TASKS",
+        create_task_screen,
+        width=30
+    )
+
+    create_button.pack(pady=10)
+
+    if array_of_tasks_made_by_user:
+
+        completion_button = make_button(
+            main_frame,
+            "ENTER TASK COMPLETION",
+            show_completion_screen,
+            width=30
+        )
+
+        completion_button.pack(pady=10)
+
+        score_button = make_button(
+            main_frame,
+            "CALCULATE SCORE",
+            calculate_score,
+            width=30
+        )
+
+        score_button.pack(pady=10)
+
+
+# ============================================================
+# CREATE TASK SCREEN
+# ============================================================
+
+def create_task_screen():
+
+    global number_entry
+    global task_frame
+    global task_entries
+    global completion_vars
+
+    clear_main_frame()
+
+    task_entries.clear()
+    completion_vars.clear()
+
+    title = tk.Label(
+        main_frame,
+        text="CREATE TASKS",
+        font=TITLE_FONT,
+        bg=BG,
+        fg=TEXT
+    )
+
+    title.pack(pady=(30, 25))
+
+    # --------------------------------------------------------
+    # NUMBER OF TASKS
+    # --------------------------------------------------------
+
+    number_frame = tk.Frame(
+        main_frame,
+        bg=BG
+    )
+
+    number_frame.pack(pady=5)
+
+    number_label = tk.Label(
+        number_frame,
+        text="Number of tasks:",
+        font=FONT,
+        bg=BG,
+        fg=TEXT
+    )
+
+    number_label.pack(
+        side="left",
+        padx=8
+    )
+
+    number_entry = tk.Entry(
+        number_frame,
+        width=8,
+        font=FONT,
+        bg=PANEL,
+        fg=TEXT,
+        insertbackground=TEXT,
+        relief="flat"
+    )
+
+    number_entry.pack(
+        side="left",
+        padx=8
+    )
+
+    create_fields_button = make_button(
+        main_frame,
+        "CREATE TASK FIELDS",
+        create_tasks,
+        width=25
+    )
+
+    create_fields_button.pack(
+        pady=15
+    )
+
+    # --------------------------------------------------------
+    # TASK FRAME
+    # --------------------------------------------------------
+
+    task_frame = tk.Frame(
+        main_frame,
+        bg=BG
+    )
+
+    task_frame.pack(
+        pady=5
+    )
+
+
+# ============================================================
+# CREATE TASK FIELDS
+# ============================================================
+
+def create_tasks():
+
+    global task_entries
+
+    try:
+        n = int(number_entry.get())
+
+        if n <= 0:
+            raise ValueError
+
+    except ValueError:
+
+        messagebox.showerror(
+            "Invalid Number",
+            "Enter a whole number greater than 0."
+        )
+
+        return
+
+    # Clear previous task widgets
+    for widget in task_frame.winfo_children():
+        widget.destroy()
+
+    task_entries.clear()
+
+    # Headers
+    task_header = tk.Label(
+        task_frame,
+        text="TASK",
+        width=32,
+        font=("Arial", 11, "bold"),
+        bg=BG,
+        fg=SUBTEXT
+    )
+
+    task_header.grid(
+        row=0,
+        column=0,
+        padx=10,
+        pady=5
+    )
+
+    type_header = tk.Label(
+        task_frame,
+        text="TYPE",
+        width=18,
+        font=("Arial", 11, "bold"),
+        bg=BG,
+        fg=SUBTEXT
+    )
+
+    type_header.grid(
+        row=0,
+        column=1,
+        padx=10,
+        pady=5
+    )
+
+    # Create rows
+    for i in range(n):
+
+        task_name = tk.Entry(
+            task_frame,
+            width=32,
+            font=FONT,
+            bg=PANEL,
+            fg=TEXT,
+            insertbackground=TEXT,
+            relief="flat"
+        )
+
+        task_type = ttk.Combobox(
+            task_frame,
+            values=[
+                "strength",
+                "discipline",
+                "intellect"
+            ],
+            state="readonly",
+            width=17,
+            font=("Arial", 10)
+        )
+
+        task_type.current(0)
+
+        task_name.grid(
+            row=i + 1,
+            column=0,
+            padx=10,
+            pady=5
+        )
+
+        task_type.grid(
+            row=i + 1,
+            column=1,
+            padx=10,
+            pady=5
+        )
+
+        task_entries.append(
+            (task_name, task_type)
+        )
+
+    save_button = make_button(
+        main_frame,
+        "SAVE TASKS",
+        save_tasks,
+        width=25,
+        bg="#3b7049"
+    )
+
+    save_button.pack(
+        pady=20
+    )
+
+
+# ============================================================
+# SAVE TASKS
+# ============================================================
+
+def save_tasks():
+
+    if not task_entries:
+
+        messagebox.showerror(
+            "Error",
+            "Create the task fields first."
+        )
+
+        return
+
+    array_of_tasks_made_by_user.clear()
+    array_of_tasks_made_by_user_bool.clear()
+
+    for task_name, task_type in task_entries:
+
+        name = task_name.get().strip()
+        category = task_type.get()
+
+        if name == "":
+
+            messagebox.showerror(
+                "Invalid Task",
+                "Every task must have a name."
+            )
+
+            return
+
+        array_of_tasks_made_by_user.append(
+            [name, category]
+        )
+
+    show_completion_screen()
+
+
+# ============================================================
+# COMPLETION SCREEN
+# ============================================================
+
+def show_completion_screen():
+
+    clear_main_frame()
+
+    completion_vars.clear()
+
+    title = tk.Label(
+        main_frame,
+        text="TASK COMPLETION",
+        font=TITLE_FONT,
+        bg=BG,
+        fg=TEXT
+    )
+
+    title.pack(
+        pady=(30, 25)
+    )
+
+    task_container = tk.Frame(
+        main_frame,
+        bg=BG
+    )
+
+    task_container.pack(
+        pady=5
+    )
+
+    for i, task in enumerate(
+        array_of_tasks_made_by_user
+    ):
+
+        var = tk.BooleanVar(
+            value=False
+        )
+
+        completion_vars.append(var)
+
+        row = tk.Frame(
+            task_container,
+            bg=PANEL,
+            width=650,
+            height=48
+        )
+
+        row.pack(
+            pady=5
+        )
+
+        row.pack_propagate(False)
+
+        checkbox = tk.Checkbutton(
+            row,
+            variable=var,
+            bg=PANEL,
+            activebackground=PANEL,
+            selectcolor=PANEL_2,
+            cursor="hand2"
+        )
+
+        checkbox.pack(
+            side="left",
+            padx=8
+        )
+
+        name_label = tk.Label(
+            row,
+            text=task[0],
+            font=FONT,
+            bg=PANEL,
+            fg=TEXT,
+            anchor="w"
+        )
+
+        name_label.pack(
+            side="left",
+            fill="x",
+            expand=True
+        )
+
+        category_colors = {
+            "strength": STRENGTH,
+            "discipline": DISCIPLINE,
+            "intellect": INTELLECT
+        }
+
+        category_label = tk.Label(
+            row,
+            text=task[1].upper(),
+            font=("Arial", 10, "bold"),
+            bg=PANEL,
+            fg=category_colors[task[1]],
+            width=14
+        )
+
+        category_label.pack(
+            side="right",
+            padx=15
+        )
+
+    calculate_button = make_button(
+        main_frame,
+        "CALCULATE SCORE",
+        calculate_score,
+        width=25,
+        bg="#3b7049"
+    )
+
+    calculate_button.pack(
+        pady=(25, 10)
+    )
+
+    back_button = make_button(
+        main_frame,
+        "BACK TO MAIN MENU",
+        main_menu,
+        width=25
+    )
+
+    back_button.pack()
+
+
+# ============================================================
+# CALCULATE SCORE
+# ============================================================
+
+def calculate_score():
+
+    if len(array_of_tasks_made_by_user) == 0:
+
+        messagebox.showerror(
+            "Error",
+            "Please create tasks first."
+        )
+
+        return
+
+    if len(completion_vars) != len(
+        array_of_tasks_made_by_user
+    ):
+
+        messagebox.showerror(
+            "Error",
+            "Please enter completion status for all tasks."
+        )
+
+        return
+
+    array_of_tasks_made_by_user_bool.clear()
+
+    for var in completion_vars:
+
+        array_of_tasks_made_by_user_bool.append(
+            var.get()
+        )
+
+    result = [
+        task + [completed]
+        for task, completed in zip(
+            array_of_tasks_made_by_user,
+            array_of_tasks_made_by_user_bool
+        )
+    ]
+
+    strength_score = sum(
+        1
+        for entry in result
+        if entry[1] == "strength"
+        and entry[2]
+    )
+
+    discipline_score = sum(
+        1
+        for entry in result
+        if entry[1] == "discipline"
+        and entry[2]
+    )
+
+    intellect_score = sum(
+        1
+        for entry in result
+        if entry[1] == "intellect"
+        and entry[2]
+    )
+
+    final_score = (
+        strength_score,
+        discipline_score,
+        intellect_score
+    )
+
+    show_score_screen(final_score)
+
+
+# ============================================================
+# SCORE SCREEN
+# ============================================================
+
+def show_score_screen(scores):
+
+    clear_main_frame()
+
+    strength, discipline, intellect = scores
+
+    title = tk.Label(
+        main_frame,
+        text="YOUR SCORE",
+        font=TITLE_FONT,
+        bg=BG,
+        fg=TEXT
+    )
+
+    title.pack(
+        pady=(35, 30)
+    )
+
+    cards_frame = tk.Frame(
+        main_frame,
+        bg=BG
+    )
+
+    cards_frame.pack()
+
+    create_score_card(
+        cards_frame,
+        "STRENGTH",
+        strength,
+        STRENGTH,
+        0
+    )
+
+    create_score_card(
+        cards_frame,
+        "DISCIPLINE",
+        discipline,
+        DISCIPLINE,
+        1
+    )
+
+    create_score_card(
+        cards_frame,
+        "INTELLECT",
+        intellect,
+        INTELLECT,
+        2
+    )
+
+    total = (
+        strength
+        + discipline
+        + intellect
+    )
+
+    total_label = tk.Label(
+        main_frame,
+        text=f"TOTAL   {total}",
+        font=("Arial", 22, "bold"),
+        bg=BG,
+        fg=TEXT
+    )
+
+    total_label.pack(
+        pady=30
+    )
+
+    new_tasks_button = make_button(
+        main_frame,
+        "CREATE NEW TASKS",
+        create_task_screen,
+        width=25
+    )
+
+    new_tasks_button.pack(
+        pady=5
+    )
+
+    menu_button = make_button(
+        main_frame,
+        "MAIN MENU",
+        main_menu,
+        width=25
+    )
+
+    menu_button.pack(
+        pady=5
+    )
+
+
+# ============================================================
+# SCORE CARD
+# ============================================================
+
+def create_score_card(
+    parent,
+    name,
+    score,
+    color,
+    column
+):
+
+    card = tk.Frame(
+        parent,
+        bg=PANEL,
+        width=210,
+        height=180
+    )
+
+    card.grid(
+        row=0,
+        column=column,
+        padx=8
+    )
+
+    card.pack_propagate(False)
+
+    name_label = tk.Label(
+        card,
+        text=name,
+        font=("Arial", 14, "bold"),
+        bg=PANEL,
+        fg=color
+    )
+
+    name_label.pack(
+        pady=(25, 10)
+    )
+
+    score_label = tk.Label(
+        card,
+        text=str(score),
+        font=("Arial", 40, "bold"),
+        bg=PANEL,
+        fg=TEXT
+    )
+
+    score_label.pack()
+
+    completed_label = tk.Label(
+        card,
+        text="completed",
+        font=("Arial", 10),
+        bg=PANEL,
+        fg=SUBTEXT
+    )
+
+    completed_label.pack()
+
+
+# ============================================================
+# START PROGRAM
+# ============================================================
+
+main_menu()
+
+root.mainloop()
+
+
+The above code used codex.ai
