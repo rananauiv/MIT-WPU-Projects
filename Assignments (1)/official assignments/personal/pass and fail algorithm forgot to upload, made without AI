@@ -1,0 +1,50 @@
+##incomplete pass fail algorithm per student, requires implimentation of boolean p((entered marks/subject defined marks) x 100 >= required percentage | subject = "some string" )
+
+
+subjects = [
+    ["Mathematics", 40],
+    ["Physics", 40],
+    ["Chemistry", 40],
+    ["Computer Science", 40]
+]
+
+n = 3
+first_term = 1
+last_term = 3
+
+common_difference = (last_term - first_term) / (n - 1)
+
+students = []
+
+for i in range(n):
+    student_id = first_term + i * common_difference
+
+    if student_id == int(student_id):
+        student_id = int(student_id)
+
+    print(f"\nStudent ID: {student_id}")
+
+    marks = []
+
+    for subject in subjects:
+        while True:
+            try:
+                mark = float(input(f"Enter marks in {subject[0]}: "))
+
+                if 0 <= mark <= 100:
+                    marks.append(mark)
+                    break
+
+                print("Invalid marks. Enter a value from 0 to 100.")
+
+            except ValueError:
+                print("Invalid input. Enter a number.")
+
+    students.append([[student_id], marks])
+
+data = [students]
+
+print(data)
+
+
+### marks => attendance percent
