@@ -1,0 +1,17 @@
+def arithmatic_progression_set(a, d, c, b):
+    def term(n):
+        return a + (n - 1) * d
+
+    result = [term(n) for n in range(c, b + 1)]
+    return result
+
+
+"""the above is a simple yet very useful program that ensures that python 3 ipykernel generates arithmatic progressions
+#applications include :-
+ 1.tensor element index generation
+ 2.index representation for vectors and sets
+ 3.generating identification numbers or other patterns
+ 4. trying abstract summation using said conditions
+ 5.this is just for ap, when dealing with abstract sum, rewrite appropriately
+"""
+arithmatic_progression_set(1,1,1,10)
