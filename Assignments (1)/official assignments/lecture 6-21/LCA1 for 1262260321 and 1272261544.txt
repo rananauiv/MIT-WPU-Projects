@@ -1,0 +1,81 @@
+##i shall turn this into an array for more optimized version
+## made by Rudra and madhav u Division 9, cse aids, batch i1,lca 1 2026-27 first year
+## snake case has been used  as much as possible and m is abreviation for attendance, p is percentage
+m_physics = int(input("enter physics attendance"))
+m_chem = int(input("enter chemistry attendance"))
+m_math = int(input("enter mathematics attendance"))
+m_biology = int(input("enter biology attendance"))
+
+##i have assumed that students are required to attend t_subject amount of classes in total
+## now i will turn into percentage
+
+t_physics =10
+t_chem =10
+t_math = 10
+t_biology =10
+
+#now percentage
+p_physics = (m_physics/t_physics)*100 
+p_chem = (m_chem/t_chem)*100
+p_math = (m_math/t_math)*100
+p_biology = (m_biology/t_biology)*100
+#i have t as threshold attendance required in percentage
+t= 85
+#now eligibility bool , e is short for eligibility
+e_physics = p_physics in range(t,101)
+e_chem = p_chem in range(t,101)
+e_math = p_math in range(t,101)
+e_biology = p_biology in range(t,101)
+
+## prints the outputs to user
+
+print(f"Your percentage in physics is {p_physics} and your eligibility in physics is {e_physics} and" )
+print(f"Your percentage in chemistry is {p_chem} and your eligibility in chemistry is {e_chem} and ")
+print(f"Your percentage in mathematics is {p_math} and your eligibility in mathematics is {e_math} and")
+print(f"Your percentage in biology is {p_biology} and your eligibility in biology is {e_biology}")
+
+
+
+
+!!!!!!!!separate kernel!!!!!!
+
+students = []
+
+# Subject name : maximum attendance
+subjects = {
+    "Mathematics": 100,
+    "Physics": 70,
+    "Chemistry": 80,
+    "biology": 50
+}
+
+num_students = 3
+
+for student_number in range(1, num_students + 1):
+
+    scores = []
+
+    print(f"\nStudent {student_number}")
+
+    for subject, maximum in subjects.items():
+
+        while True:
+            try:
+                score = int(
+                    input(f"Enter attendance for {subject} (0-{maximum}): ")
+                )
+
+                if 0 <= score <= maximum:
+                    scores.append(score)
+                    break
+
+                print(f"Invalid attendance. Enter a value between 0 and {maximum}.")
+
+            except ValueError:
+                print("Invalid input. Enter a whole number.")
+
+
+
+
+print("\nStudent Data:")
+print(students)

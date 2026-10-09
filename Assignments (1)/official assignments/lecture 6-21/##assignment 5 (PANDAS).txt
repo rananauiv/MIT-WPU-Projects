@@ -1,0 +1,43 @@
+##assignment 5 (PANDAS)
+##im sticking to oop since ecs is annoying here , and only requires certain limit
+## sticking to a combination of ecs(data driven dummy keeping), and object oriented, dummy eliminating is the correct way to code
+import sympy as sp
+import pandas as pd
+import numpy as np
+
+sigma= pd.DataFrame(
+ {"1" : [4, 5, 6],
+ "2" : [7, 8, 9],
+ "3" : [10, 11, 12]},
+ index = [1, 2, 3])
+##experimenting with dataframes
+
+data_list = ["g", "e", "e", "k", "s"]
+ser = pd.Series(data_list)
+f=[1,2,3,4]                              
+g=["a","b","c","d"]
+tau = pd.Series(data=f,index=g)
+print(tau.shape)
+data_index=['a','b','c','d','e']
+info= {'one': pd.Series(data_list, index= data_index) }
+d1=pd.DataFrame(info)
+
+
+##revision of while function
+
+# 1. Initialize a variable
+count = 1
+
+# 2. Set the condition
+while count <= 5:
+    (f"Iteration number: {count}")
+    
+    # 3. Update the variable (increment)
+    count += 1 
+##there have been multiple print functions here, like below, i removed since output is cluttered
+print(d1)
+## origin of bariess algorithm
+#add new column
+d1['two']=pd.Series([20,60,50], index= ['f','g','h'])
+
+print(d1)
