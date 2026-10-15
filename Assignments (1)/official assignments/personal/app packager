@@ -1,0 +1,29 @@
+import os
+import glob
+import subprocess
+import sys
+
+files = glob.glob("*.py")
+
+if not files:
+    print("No .py files found in:", os.getcwd())
+else:
+    print("Select your Python file:")
+    for i, file in enumerate(files, 1):
+        print(f"{i}. {file}")
+
+    choice = int(input("Enter file number: "))
+    script = files[choice - 1]
+    app_name = os.path.splitext(os.path.basename(script))[0].replace(" ", "_")
+
+    result = subprocess.run([
+        sys.executable, "-m", "PyInstaller",
+        "--noconfirm", "--clean", "--onefile", "--windowed",
+        "--name", app_name, script
+    ])
+
+    if result.returncode == 0:
+        print("Your executable:", os.path.abspath(f"dist/{app_name}.exe"))
+    else:
+        print("Build failed. Check the errors above.")
+## this is an original way to distribute apps using python in new jupyter cell 
