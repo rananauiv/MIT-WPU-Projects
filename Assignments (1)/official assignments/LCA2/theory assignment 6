@@ -1,0 +1,54 @@
+```python
+import pandas as pd
+import numpy as np
+
+file_path = "array.csv"
+
+if file_path.endswith(".csv"):
+    df = pd.read_csv(file_path)
+elif file_path.endswith(".xls") or file_path.endswith(".xlsx"):
+    df = pd.read_excel(file_path)
+else:
+    print("Unsupported file format")
+    exit()
+
+print("Original Dataset:")
+print(df)
+
+print("\nFirst Five Records:")
+print(df.head())
+
+print("\nDataset Information:")
+df.info()
+
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+print("\nDuplicate Records:", df.duplicated().sum())
+
+for column in df.columns:
+    if pd.api.types.is_numeric_dtype(df[column]):
+        df[column] = df[column].fillna(df[column].mean())
+    else:
+        mode = df[column].mode()
+        if not mode.empty:
+            df[column] = df[column].fillna(mode[0])
+
+df = df.drop_duplicates()
+
+for column in df.columns:
+    df[column] = pd.to_numeric(df[column], errors="ignore")
+
+print("\nPreprocessed Dataset:")
+print(df)
+
+print("\nFinal Dataset Information:")
+df.info()
+
+print("\nNumber of Rows:", df.shape[0])
+print("Number of Columns:", df.shape[1])
+
+df.to_csv("preprocessed_array.csv", index=False)
+
+print("\nCleaned dataset saved as preprocessed_array.csv")
+```
